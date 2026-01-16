@@ -4,7 +4,12 @@ import { UpOutline, DownOutline } from 'antd-mobile-icons';
 import { useState } from 'react';
 
 const Month = () => {
-    const [visible, setVisible] = useState(false);
+    // 控制时间弹框的打开和关闭
+    const [dateVisible, setDateVisible] = useState(false);
+    // 时间选择器确认回调
+    const dateConfirm = date => {
+        console.log(date);
+    };
 
     return (
         <div className="section">
@@ -12,10 +17,9 @@ const Month = () => {
                 <NavBar backIcon={false}>月度收支</NavBar>
             </div>
             <div className="content">
-                <div className="date">
+                <div className="date" onClick={() => setDateVisible(true)}>
                     <span className="text">2026 | 1月账单</span>
-                    <UpOutline />
-                    <DownOutline />
+                    {dateVisible ? <UpOutline /> : <DownOutline />}
                 </div>
                 <div className="statistics">
                     <div className="item">
@@ -36,10 +40,11 @@ const Month = () => {
             <DatePicker
                 title="记账日期"
                 precision="month"
-                visible={visible}
+                visible={dateVisible}
                 onClose={() => {
-                    setVisible(false);
+                    setDateVisible(false);
                 }}
+                onConfirm={dateConfirm}
                 max={new Date()}
             />
         </div>
