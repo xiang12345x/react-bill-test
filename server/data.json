@@ -17,28 +17,28 @@
         {
             "type":"pay",
             "money":-33,
-            "data":"2025-12-01",
+            "data":"2025-01-01",
             "useFor":"dessert",
             "id":1
         },
         {
             "type":"income",
             "money":50,
-            "data":"2025-12-08",
+            "data":"2025-01-08",
             "useFor":"dessert",
             "id":1
         },
         {
             "type":"pay",
             "money":-55,
-            "data":"2025-11-01",
+            "data":"2025-02-01",
             "useFor":"dessert",
             "id":1
         },
         {
             "type":"income",
             "money":80,
-            "data":"2025-11-11",
+            "data":"2025-02-11",
             "useFor":"dessert",
             "id":1
         }

@@ -15,9 +15,22 @@ const Month = () => {
     // 控制时间弹框的打开和关闭
     const [dateVisible, setDateVisible] = useState(false);
     const [date, setDate] = useState(new Date());
+    const [currentMonthList, setCurrentMonthList] = useState([]);
+    const monthResult = useMemo(() => {
+        // 支出 收入 结余
+        const pay = currentMonthList.filter(item => item.type === 'pay').reduce((pre, cur) => pre + cur.money, 0);
+        const income = currentMonthList.filter(item => item.type === 'income').reduce((pre, cur) => pre + cur.money, 0);
+        return {
+            pay,
+            income,
+            balance: income + pay,
+        };
+    }, [currentMonthList]);
     // 时间选择器确认回调
     const dateConfirm = date => {
+        const formatDate = `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' : ''}${date.getMonth() + 1}`;
         setDate(date);
+        setCurrentMonthList(monthGroup[formatDate] || []);
     };
 
     return (
@@ -34,15 +47,15 @@ const Month = () => {
                 </div>
                 <div className="statistics">
                     <div className="item">
-                        <span className="money">10000</span>
+                        <span className="money">{monthResult.pay.toFixed(2)}</span>
                         <span className="type">支出</span>
                     </div>
                     <div className="item">
-                        <span className="money">20000</span>
+                        <span className="money">{monthResult.income.toFixed(2)}</span>
                         <span className="type">收入</span>
                     </div>
                     <div className="item">
-                        <span className="money">10000</span>
+                        <span className="money">{monthResult.balance.toFixed(2)}</span>
                         <span className="type">结余</span>
                     </div>
                 </div>
