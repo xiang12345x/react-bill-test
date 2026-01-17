@@ -6,9 +6,10 @@ import { useState } from 'react';
 const Month = () => {
     // 控制时间弹框的打开和关闭
     const [dateVisible, setDateVisible] = useState(false);
+    const [date, setDate] = useState(new Date());
     // 时间选择器确认回调
     const dateConfirm = date => {
-        console.log(date);
+        setDate(date);
     };
 
     return (
@@ -18,7 +19,9 @@ const Month = () => {
             </div>
             <div className="content">
                 <div className="date" onClick={() => setDateVisible(true)}>
-                    <span className="text">2026 | 1月账单</span>
+                    <span className="text">
+                        {date.getFullYear()} | {date.getMonth() + 1}月账单
+                    </span>
                     {dateVisible ? <UpOutline /> : <DownOutline />}
                 </div>
                 <div className="statistics">
