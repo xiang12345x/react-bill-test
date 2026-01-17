@@ -1,9 +1,10 @@
 import { NavBar, DatePicker } from 'antd-mobile';
 import './index.scss';
 import { UpOutline, DownOutline } from 'antd-mobile-icons';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
+import dayjs from 'dayjs';
 
 const Month = () => {
     // 按月做数据的分组
@@ -26,9 +27,16 @@ const Month = () => {
             balance: income + pay,
         };
     }, [currentMonthList]);
+
+    // 初始化的时候把当前月的统计数据显示出来
+    useEffect(() => {
+        const formatDate = dayjs(date).format('YYYY-MM');
+        setCurrentMonthList(monthGroup[formatDate] || []);
+    }, [date, monthGroup]);
+
     // 时间选择器确认回调
     const dateConfirm = date => {
-        const formatDate = `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' : ''}${date.getMonth() + 1}`;
+        const formatDate = dayjs(date).format('YYYY-MM');
         setDate(date);
         setCurrentMonthList(monthGroup[formatDate] || []);
     };
