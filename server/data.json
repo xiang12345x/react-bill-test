@@ -3,42 +3,42 @@
         {
             "type":"pay",
             "money":-99,
-            "data":"2022-10-24",
+            "data":"2026-01-17",
             "useFor":"drinks",
             "id":1
         },
         {
             "type":"income",
             "money":100,
-            "data":"2022-10-28",
+            "data":"2026-01-15",
             "useFor":"bonus",
             "id":1
         },
         {
             "type":"pay",
             "money":-33,
-            "data":"2023-08-01",
+            "data":"2025-12-01",
+            "useFor":"dessert",
+            "id":1
+        },
+        {
+            "type":"income",
+            "money":50,
+            "data":"2025-12-08",
             "useFor":"dessert",
             "id":1
         },
         {
             "type":"pay",
-            "money":-33,
-            "data":"2023-08-01",
+            "money":-55,
+            "data":"2025-11-01",
             "useFor":"dessert",
             "id":1
         },
         {
-            "type":"pay",
-            "money":-33,
-            "data":"2023-08-01",
-            "useFor":"dessert",
-            "id":1
-        },
-        {
-            "type":"pay",
-            "money":-33,
-            "data":"2023-08-01",
+            "type":"income",
+            "money":80,
+            "data":"2025-11-11",
             "useFor":"dessert",
             "id":1
         }

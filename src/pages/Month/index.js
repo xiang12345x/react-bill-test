@@ -1,9 +1,17 @@
 import { NavBar, DatePicker } from 'antd-mobile';
 import './index.scss';
 import { UpOutline, DownOutline } from 'antd-mobile-icons';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
+import _ from 'lodash';
 
 const Month = () => {
+    // 按月做数据的分组
+    const billList = useSelector(state => state.bill.billList);
+    const monthGroup = useMemo(() => {
+        // return 出去计算后的值
+        return _.groupBy(billList, item => `${item.data.slice(0, 7)}`);
+    }, [billList]);
     // 控制时间弹框的打开和关闭
     const [dateVisible, setDateVisible] = useState(false);
     const [date, setDate] = useState(new Date());
